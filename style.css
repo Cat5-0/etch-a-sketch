@@ -7,17 +7,16 @@
 /* Flexbox is written here */
 /* CSS Grid */
 
-#gridContainer {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    width: 500px;
-    height: 500px;
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 960px;
     border: 1px solid black;
 
 }
 
-.gridItem {
+.gridCell {
+    box-sizing: border-box;
     border: 1px solid lightgray;
-    background-color: #eee;
 }
