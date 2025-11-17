@@ -1,42 +1,23 @@
 /* Some default styles to make each box visible */
-.box {
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    text-shadow: 4px 4px 0 rgba(0,0,0,0,1);
-    padding: 10px;
-}
+
 
 /* Colours for each box */
-.box1 {background:#1abc9c;}
-.box2 {background:#3498db;}
-.box3 {background:#9b59b6;}
-.box4 {background:#34495e;}
-.box5 {background:#f1c40f;}
-.box6 {background:#e67e22;}
-.box7 {background:#e74c3c;}
-.box8 {background:#bdc3c7;}
-.box9 {background:#2ecc71;}
-.box10 {background:#16a085;}
-.box11 {background:#1abc9c;}
-.box12 {background:#3498db;}
-.box13 {background:#9b59b6;}
-.box14 {background:#34495e;}
-.box15 {background:#f1c40f;}
-.box16 {background:#e67e22;}
+
 
 /* Flexbox is written here */
-.container {
-    display: flex;
+/* CSS Grid */
+
+#gridContainer {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    width: 500px;
+    height: 500px;
     border: 1px solid black;
-    margin: 20px;
-    padding: 10px;
-    width: 300px;
-    height: 200px;
-    flex-wrap: wrap;
-    align-items: center;
+
 }
 
-.box {
-    width: 30px;
+.gridItem {
+    border: 1px solid lightgray;
+    background-color: #eee;
 }
