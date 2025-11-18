@@ -1,13 +1,4 @@
-// Select HTML elements
 const gridContainer = document.getElementById('grid-container');
-const gridSize = document.getElementById('gridSize');
-const black = document.getElementById('black');
-const colour = document.getElementById('colour');
-const clear = document.getElementById('clear');
-
-// Add event listeners to elements
-gridSize.addEventListener('click', () => createGrid());
-
 
 function createGrid(size) {
     // Clear existing grid cells
@@ -15,7 +6,7 @@ function createGrid(size) {
 
     // Calculate cell dimensions to fit within the container
     const cellSize = (gridContainer.clientWidth / size);
-    
+        
     for (let i = 0; i < size * size; i++) {
         const gridCell = document.createElement('div');
         gridCell.classList.add('gridCell');
@@ -57,5 +48,3 @@ document.body.insertBefore(clearButton, gridContainer);
 clearButton.addEventListener('click', () => {
     createGrid(16);
 })
-
-// Button for user to select black hover affect for drawing
