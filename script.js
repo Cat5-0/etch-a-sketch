@@ -1,20 +1,22 @@
 // Select HTML elements
 const gridContainer = document.getElementById('grid-container');
 const gridSize = document.getElementById('gridSize');
-const black = document.getElementById('black');
-const colour = document.getElementById('colour');
-const clear = document.getElementById('clear');
+const blackBtn = document.getElementById('black');
+const colourBtn = document.getElementById('colour');
+const clearBtn = document.getElementById('clear');
+const resizeButton = document.createElement('button');
 
 // Add event listeners to elements
-gridSize.addEventListener('click', () => createGrid());
+gridSize.addEventListener('click', resizeGrid);
+blackBtn.addEventListener('click', setBlackMode);
+colourBtn.addEventListener('Click', setColourMode);
+clearBtn.addEventListener('Click', clearGrid);
 
+let currentColourMode = 'black';
 
 function createGrid(size) {
-    // Clear existing grid cells
-    gridContainer.innerText = '';
-
-    // Calculate cell dimensions to fit within the container
-    const cellSize = (gridContainer.clientWidth / size);
+    gridContainer.innerText = ''; // Clear existing grid cells
+    const cellSize = (gridContainer.clientWidth / size); // Calculate cell dimensions to fit within the container
     
     for (let i = 0; i < size * size; i++) {
         const gridCell = document.createElement('div');
@@ -24,30 +26,32 @@ function createGrid(size) {
      
     // Add hover effect for drawing
     gridCell.addEventListener('mouseover', () => {
-        gridCell.style.backgroundColor = 'black';
+        if (currentColourMode === 'black') {
+            gridCell.style.backgroundColor = 'black';
+        } else if (currentColourMode === 'colour') {
+            const randomColour = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`; 
+            gridCell.randomColour = randomColour;
+        }
     });
     gridContainer.appendChild(gridCell);
     }
 }
-//Initial grid creation (16 x 16)
-createGrid(16);
+
 
 // Button for user to change grid size
-const resizeButton = document.createElement('button');
-resizeButton.textContent = "Change Grid Size";
-// Add button before container
-document.body.insertBefore(resizeButton, gridContainer);
-
-resizeButton.addEventListener('click', () => {
+function resizeGrid() {
     let newSize = prompt("Enter new grid size between 2 - 100: ");
     newSize = parseInt(newSize);
-
-    if (newSize >= 2 && newSize <=100) {
+    if (newSize && newSize >= 2 && newSize <=100) {
         createGrid(newSize);
     } else {
         alert("Please enter size between 2 and 100");
+        return;
     }
-})
+    createGrid(newSize);
+}
+
+
 
 // Button for user to clear the grid 
 const clearButton = document.createElement('button');
@@ -59,3 +63,6 @@ clearButton.addEventListener('click', () => {
 })
 
 // Button for user to select black hover affect for drawing
+
+//Initial grid creation (16 x 16)
+createGrid(16);
