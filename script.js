@@ -1,16 +1,15 @@
 // Select HTML elements
 const gridContainer = document.getElementById('grid-container');
 const gridSize = document.getElementById('gridSize');
-const blackBtn = document.getElementById('black');
-const colourBtn = document.getElementById('colour');
-const clearBtn = document.getElementById('clear');
-const resizeButton = document.createElement('button');
+const blackBtn = document.getElementById('blackBtn');
+const colourBtn = document.getElementById('colourBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 // Add event listeners to elements
 gridSize.addEventListener('click', resizeGrid);
 blackBtn.addEventListener('click', setBlackMode);
-colourBtn.addEventListener('Click', setColourMode);
-clearBtn.addEventListener('Click', clearGrid);
+colourBtn.addEventListener('click', setColourMode);
+clearBtn.addEventListener('click', clearGrid);
 
 let currentColourMode = 'black';
 
@@ -30,15 +29,14 @@ function createGrid(size) {
             gridCell.style.backgroundColor = 'black';
         } else if (currentColourMode === 'colour') {
             const randomColour = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`; 
-            gridCell.randomColour = randomColour;
+            gridCell.style.backgroundColor = randomColour;
         }
     });
     gridContainer.appendChild(gridCell);
     }
 }
 
-
-// Button for user to change grid size
+// Function for user to change grid size
 function resizeGrid() {
     let newSize = prompt("Enter new grid size between 2 - 100: ");
     newSize = parseInt(newSize);
@@ -51,18 +49,18 @@ function resizeGrid() {
     createGrid(newSize);
 }
 
+function setBlackMode() {
+    currentColourMode = 'black';
+}
 
+function setColourMode() {
+    currentColourMode = 'colour';
+}
 
-// Button for user to clear the grid 
-const clearButton = document.createElement('button');
-clearButton.textContent = "Clear Grid";
-document.body.insertBefore(clearButton, gridContainer);
-
-clearButton.addEventListener('click', () => {
-    createGrid(16);
-})
-
-// Button for user to select black hover affect for drawing
-
-//Initial grid creation (16 x 16)
+function clearGrid() {
+    const cells = document.querySelectorAll('.gridCell');
+    cells.forEach(gridCell => {
+        gridCell.style.backgroundColor = '';
+    });
+}
 createGrid(16);
