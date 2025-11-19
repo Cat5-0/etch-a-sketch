@@ -13,6 +13,7 @@ clearBtn.addEventListener('click', clearGrid);
 
 let currentColourMode = 'black';
 
+
 function createGrid(size) {
     gridContainer.innerText = ''; // Clear existing grid cells
     const cellSize = (gridContainer.clientWidth / size); // Calculate cell dimensions to fit within the container
